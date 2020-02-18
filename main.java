@@ -71,7 +71,7 @@ class Folding{
                 int R = P + eX, L = P - eX, U = P + eY, D = P - eY, total = 0;
                 for(i = index; --i >= 0 ;)
                     if(Ps[i] == R || Ps[i] == L || Ps[i] == U || Ps[i] == D){
-                        if(Hs[i]) Vs[index]--;
+                        if(Hs[i] && i < index-1) Vs[index]--;
                         if(++total == 4) break;
                     }
             }
