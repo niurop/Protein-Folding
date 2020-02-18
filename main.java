@@ -1,6 +1,19 @@
 public class MyClass {
     public static void main(String args[]) {
-        Folding.Fold(new Float(args[0]), new Float(args[1]), args[2]);
+        try {
+            float P1 = new Float(args[0]), P2 = new Float(args[1]);
+            if(P1 < 0 || P1 > 1 || P2 < 0 || P2 > 1){
+                System.out.println("First two parameters need to be floating point numbers form 0 to 1.");
+                return;
+            }
+            Folding.Fold(P1, P2, args[2]);
+        } catch (NumberFormatException exception) {
+            System.out.println("First two parameters need to be floating point numbers form 0 to 1.");
+            System.out.println(exception);
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
+        
     }
 }
 
@@ -24,6 +37,10 @@ class Folding{
         if(n == 0) return;
         for(int i = 0; i < n; i++){
             Hs[i] = code.charAt(i) == 'h' || code.charAt(i) == 'H'; // there should be a better way...
+            if(!Hs[i] && code.charAt(i) != 'p' && code.charAt(i) != 'P'){
+                System.out.print("Code contains something besides p, P, h and H. Aborting!!!");
+                return;
+            }
             if(Hs[i])Hnb++;
         }
         Ps[0] = origin; // start at origin
