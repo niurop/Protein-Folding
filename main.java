@@ -23,7 +23,7 @@ class Folding{
         Hs = new boolean[n]; // for quick tests
         if(n == 0) return;
         for(int i = 0; i < n; i++){
-            Hs[i] = code.charAt(i) == 'H'; // there should be a better way...
+            Hs[i] = code.charAt(i) == 'h' || code.charAt(i) == 'H'; // there should be a better way...
             if(Hs[i])Hnb++;
         }
         Ps[0] = origin; // start at origin
